@@ -1,6 +1,6 @@
 const Benchmark = require('benchmark');
 const { linearSearch, binarySearch } = require('./search');
-const bubbleSort = require('./sort');
+const { bubbleSort, quickSort } = require('./sort');
 
 const searchNumbers = [];
 for (let i = 1; i <= 1000000; i++) {
@@ -28,6 +28,10 @@ suite
   .add('bubble sort', function() {
     const testArray = [...sortNumbers];
     bubbleSort(testArray);
+  })
+  .add('quick sort', function() {
+    const testArray = [...sortNumbers];
+    quickSort(testArray);
   })
   .on('complete', function() {
     // print test's name and average time in milliseconds
