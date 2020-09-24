@@ -33,6 +33,12 @@ suite
     const testArray = [...sortNumbers];
     quickSort(testArray);
   })
+  .add('js sort', function() {
+    const testArray = [...sortNumbers];
+    testArray.sort((a, b) => {
+      return a - b;
+    })
+  })
   .on('complete', function() {
     // print test's name and average time in milliseconds
     this.forEach(result => console.log(`${result.name} averaged ${result.stats.mean * 1000} milliseconds.`));
