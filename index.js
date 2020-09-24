@@ -16,8 +16,12 @@ suite
   .add('linear search', function() {
     linearSearch(numbers, target);
   })
+  .add('binary search', function() {
+    binarySearch(numbers, target, 0, numbers.length - 1);
+  })
   .on('complete', function() {
     // print test's name and average time in milliseconds
-    console.log(`${this[0].name} averaged ${this[0].stats.mean*1000} milliseconds.`);
+    this.forEach(result => console.log(`${result.name} averaged ${result.stats.mean * 1000} milliseconds.`));
   })
   .run();
+
