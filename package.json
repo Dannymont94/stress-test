@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Dannymont94/stress-test/issues"
   },
-  "homepage": "https://github.com/Dannymont94/stress-test#readme"
+  "homepage": "https://github.com/Dannymont94/stress-test#readme",
+  "dependencies": {
+    "benchmark": "^2.1.4"
+  }
 }
