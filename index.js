@@ -1,23 +1,33 @@
 const Benchmark = require('benchmark');
 const { linearSearch, binarySearch } = require('./search');
+const bubbleSort = require('./sort');
 
-const numbers = [];
+const searchNumbers = [];
 for (let i = 1; i <= 1000000; i++) {
   // populate the array with the numbers 1 through 1,000,000
-  numbers.push(i);
+  searchNumbers.push(i);
 }
 
 // grab the last number in the array as the number we want to find
-const target = numbers[numbers.length - 1];
+const target = searchNumbers[searchNumbers.length - 1];
+
+const sortNumbers = [];
+for (let i = 0; i < 10000; i++) {
+  sortNumbers.push(Math.floor(Math.random() * 10000) + 1);  
+}
 
 const suite = new Benchmark.Suite;
 
 suite
   .add('linear search', function() {
-    linearSearch(numbers, target);
+    linearSearch(searchNumbers, target);
   })
   .add('binary search', function() {
-    binarySearch(numbers, target, 0, numbers.length - 1);
+    binarySearch(searchNumbers, target, 0, searchNumbers.length - 1);
+  })
+  .add('bubble sort', function() {
+    const testArray = [...sortNumbers];
+    bubbleSort(testArray);
   })
   .on('complete', function() {
     // print test's name and average time in milliseconds
